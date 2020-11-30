@@ -1,0 +1,488 @@
+$dark: #000000
+$dark-bg: #252525
+$light-dark: rgba(0,0,0,0.3)
+$light: #ffffff
+$main-color: #CD2A3F
+$secondary-color: #FBD341
+
+@mixin inspect()
+    border: 1px solid red
+@mixin transition()
+    transition: all 0.2s linear
+@mixin perfectCenter()
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+@mixin txtShadow()
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.8)
+@mixin boxShadow()
+    box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.25)
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap')
+
+*, *:before, *:after 
+    box-sizing: border-box
+    -moz-box-sizing: border-box
+* 
+    padding: 0
+    margin: 0
+
+body 
+    font-family: 'Poppins', sans-serif
+a 
+    text-decoration: none
+    display: inline-block
+    color: $dark
+ul 
+    list-style: none
+img 
+    max-width: 100%
+    height: auto
+    display: block
+
+.container 
+    width: 100%
+    padding-right: 15px
+    padding-left: 15px
+    margin: auto 
+.header-menu
+    background: $dark-bg
+    color: $light
+    padding: 0.8rem 0
+    .address 
+        text-align: center
+    .contact
+        margin-top: 0.5rem
+        display: flex
+        align-items: center
+        justify-content: space-between
+        p 
+            a 
+                color: $secondary-color
+                @include transition()
+                &:hover
+                    color: $main-color
+                
+
+.navigation
+    .nav 
+        display: flex
+        align-items: center
+        justify-content: space-between
+        flex-wrap: wrap
+
+        &>*
+            order: 1
+        &-logo 
+            text-align: center
+            font-size: 2rem 
+            display: flex
+            p 
+                color: $dark
+            span 
+                color: $main-color
+            a 
+                img 
+                    width: 120px
+        &-wrapper
+            width: 100%
+            order: 2
+            max-height: 0
+            overflow: hidden
+            @include transition()
+        &-main 
+            width: 100%
+            order: 2
+            font-size: 1.2rem
+            margin-top: 1rem
+            li 
+                a 
+                    padding: 0.5rem 0
+                    position: relative
+                    width: 100%
+                    border-bottom: 1px solid $light-dark
+                    &::after
+                        content: ''
+                        position: absolute
+                        transition: all 0.2s linear
+                        bottom: 0
+                        left: 0
+                        background: $light-dark
+                        width: 0
+                        height: 3px
+                        @include transition()
+                    &:hover::after, &:hover::before
+                        width: 100%
+                        background: $secondary-color
+        &-languages
+            display: flex
+            margin-top: 1rem
+            text-align: center
+            li 
+                width: 60px
+                    
+                &:hover
+                    a 
+                        color: $main-color
+                    img 
+                        opacity: 1
+                img 
+                    opacity: 0.8
+                    @include transition()
+                    @include boxShadow()
+                &:last-child
+                    margin-left: 0.5rem
+        &-hamburger
+            overflow: hidden
+            cursor: pointer
+            color: lighten($dark, 30%)
+            font-size: 1.3rem
+            &:hover 
+                color: $dark
+            @include transition()
+.heros
+    // min-height: 50vh
+    .owl-carousel
+        .item 
+            background-position: center
+            background-size: cover
+            background-repeat: no-repeat
+            width: 100%
+            min-height: 70vh
+            color: $light
+            position: relative
+            z-index: 10
+            text-align: center
+            @include txtShadow()
+            @include perfectCenter()
+            &::before
+                content: ''
+                position: absolute
+                top: 0
+                left: 0
+                width: 100%
+                height: 100%
+                background: rgba(0,0,0,0.3)
+                z-index: -1
+        .item-1
+            background-image: url('../images/hero-1.jpg')
+        .item-2
+            background-image: url('../images/hero-6.jpg')
+        .item-3
+            background-image: url('../images/hero-8.jpg')
+
+.servisi 
+    margin: 2rem auto
+    text-align: center
+    // display: flex
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
+    grid-gap: 1rem
+    // flex-direction: column
+    div
+        padding: 1.5rem
+        // margin: 1rem 0
+        background: $dark-bg
+        color: $light
+        border-radius: 8px
+        @include boxShadow()
+        @include perfectCenter()
+        &>*
+            margin: 0.25rem 0
+        h3 
+            color: $main-color
+            color: $secondary-color
+            color: darken($secondary-color,10%)
+            @include txtShadow()
+        .btn 
+            padding: 10px 15px
+            border-radius: 8px
+            background: $main-color
+            color: $light
+            margin-top: 0.8rem
+            @include transition()
+            &:hover
+                background: lighten($main-color, 10%)
+            &:active
+                transform: translateY(2px)
+                @include boxShadow()
+                
+        img 
+            width: 80px
+.hero
+    background-repeat: no-repeat
+    background-size: cover
+    background-position: center
+    min-height: 30vh
+    min-height: 40vh
+    position: relative
+    z-index: 10
+    @include perfectCenter()
+    
+    &::before
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background: rgba(0,0,0,0.3)
+        z-index: -1
+    &.about 
+        background-image: url(../images/961.jpg)
+    &.auto-klime
+        background-image: url(../images/hero-2.jpg)
+    &.bio-klima
+        background-image: url(../images/cleaning-car-air-conditioner_55997-1332.jpg)
+    &.servis-klima-uredjaja
+        background-image: url(../images/612632-PNIVIC-153.jpg)
+    &.montaza-klima-uredjaja
+        background-image: url(../images/hero-8.jpg)
+    &.princip-rada-klima-uredjaja
+        background-image: url(../images/princip-klime.jpg)
+        background-size: contain
+        background-color: #3f95b8
+    h3
+        text-align: center
+        font-size: 2rem 
+        color: $light
+        @include txtShadow()
+
+.o-nama
+    margin: 2rem auto
+    p 
+        margin: 1rem 0
+    h3 
+        text-align: center
+        margin-bottom: 1rem
+    .row 
+        .col-9
+            .txt-link
+                display: flex
+                flex-wrap: wrap
+                justify-content: center
+                text-align: center
+                li 
+                    flex: 1 1 300px
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    width: 100%
+                    margin: 0.5rem
+                    background: $dark-bg
+                    color: $light
+                    border-radius: 8px
+                    padding: 1.5rem
+                    @include boxShadow()
+                    &::before 
+                        content: '\2713'
+                        color: $secondary-color
+                        font-weight: bold
+                        margin-right: 0.7rem   
+    p
+        background: darken($secondary-color,10%)
+        color: $dark
+        border-radius: 8px
+        padding: 1.5rem
+        margin-top: 1rem
+        text-align: center
+        @include boxShadow()
+.klime, .bio-ciscenje, .princip-rada
+    p 
+        margin: 1rem 0
+        background: darken($secondary-color,10%)
+        color: $dark
+        border-radius: 8px
+        padding: 1.5rem
+        margin-top: 1rem
+        text-align: center
+        @include boxShadow()
+    .txt-list
+        display: flex
+        flex-wrap: wrap
+        text-align: center
+        justify-content: center
+        li
+            width: 200px
+            margin: 0.5rem
+            background: $dark-bg
+            color: $light
+            border-radius: 8px
+            padding: 1.5rem
+            @include boxShadow()
+            @include perfectCenter()
+            &:nth-of-type(odd)
+                color: $secondary-color
+                
+.bio-ciscenje
+    text-align: center
+.klima-uredjaji, .montaza-klima
+    margin-top: 2rem
+    p 
+        margin: 1rem 0
+    img 
+        margin: 0 auto
+        @include boxShadow()
+        
+.klima-uredjaji
+    img 
+        height: 300px
+.princip-rada, .o-nama, .klime
+    // margin-top: 2rem
+    .row 
+        display: flex
+        flex-wrap: wrap
+        margin-right: -15px
+        margin-left: -15px
+        .col-3
+            margin-top: 2rem
+            h3 
+                text-align: center
+                margin: 1rem 0
+            ul 
+                display: flex
+                flex-wrap: wrap
+                text-align: center
+                justify-content: center
+                li 
+                    a
+                        width: 200px
+                        margin: 0.5rem
+                        background: $dark-bg
+                        color: $light
+                        border-radius: 8px
+                        padding: 1rem
+                        width: 150px
+                        background: $dark-bg
+                        color: $secondary-color
+                        @include perfectCenter()
+                        @include boxShadow()
+                        @include transition()
+                        &:hover
+                            background: $main-color
+                            color: lighten($secondary-color, 10%)
+                            @include txtShadow()
+        
+    img 
+        margin: 0 auto
+        @include boxShadow()
+
+
+
+footer
+    background: $dark-bg
+    color: $light
+    padding: 1rem 0
+    margin-top: 2rem
+    .container 
+        display: grid
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))
+        grid-gap: 1rem
+        text-align: center
+        justify-content: center
+        align-items: center
+        &>*
+            padding: 0.8rem 0
+            width: 100%
+        h5 
+            font-size: 1.125rem
+            font-weight: normal
+            color: $secondary-color
+            margin-left: 0
+            margin-bottom: 0.8rem
+        span 
+            color: $secondary-color
+        a 
+            display: inline-block
+            margin-left: 0.5rem
+            color: $light
+            @include transition()
+            &:hover 
+                color: $main-color
+        .info 
+            display: flex
+            text-align: center
+            justify-content: center
+            &>* 
+                margin: 0.25rem  
+    footer.container 
+        p 
+            font-size: 0.85rem
+            padding: 0
+            margin: 0
+            text-align: center
+               
+
+.fadeOut  
+  animation-name : fadeOut  
+.fadeIn
+  animation-name : fadeIn
+@keyframes fadeIn 
+    0% 
+        opacity: 0
+    to 
+        opacity: 1
+@keyframes fadeOut 
+    0% 
+        opacity: 1
+    to 
+        opacity: 0
+
+
+
+@media (min-width: 576px) 
+    .container 
+        max-width: 540px
+
+@media (min-width: 768px) 
+    .container 
+        max-width: 720px
+    .header-menu
+        .contact
+            justify-content: space-evenly
+    // .o-nama
+    //     .txt-link 
+    //         li 
+    //             // width: 300px
+    //             flex: 1 1 300px
+    .princip-rada, .o-nama, .klime
+        .row
+            .col-9
+                flex: 0 0 75%
+                max-width: 75%
+            .col-3
+                flex: 0 0 25%
+                max-width: 25%
+                margin-top: 0
+    
+
+@media (min-width: 992px) 
+    .container 
+        max-width: 960px
+    .navigation
+        .nav 
+            flex-wrap: nowrap
+            &-wrapper
+                max-height: none
+                display: flex
+            &-main
+                display: flex
+                justify-content: space-evenly
+                text-align: center
+                a 
+                    border-bottom: none !important
+                    width: auto !important
+            &-languages
+                order: 2
+                
+            &-hamburger
+                display: none
+    // .about
+    //     ul 
+    //         grid-template-columns: repeat(3, 1fr)
+                    
+@media (min-width: 1200px) 
+    .container 
+        max-width: 1140px
+
